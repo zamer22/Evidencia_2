@@ -5,12 +5,18 @@
 
 ;; Desarrollo de la estructura para el recetario en donde se cargan los archivos se procesan las conversiones de unidades y se generan dichos cambios
 
-(def recipe-filenames
+(def recipe-filenames-1
   ["recetas/Pan-Seared Steak with Garlic Butter.txt"
    "recetas/Fettuccine Alfredo.txt"
    "recetas/Lemon Cake-1.txt"
    "recetas/Best Homemade Brownies-1.txt"
    "recetas/Chimichurri Sauce.txt"])
+
+(def recipe-filenames
+  (flatten (map-indexed
+            (fn [idx path]
+              (repeat 20 path))
+            recipe-filenames-1)))
 
 (defn load-recipe-content
   [filename]
